@@ -107,3 +107,4 @@ switch (stopLight) {
        console.log('Caution, unknown');
        break;
 }
+```
