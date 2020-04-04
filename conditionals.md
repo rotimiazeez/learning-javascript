@@ -1,4 +1,4 @@
-## Conditionals Statements
+# JavaScript Conditional Statements
 
 Conditional statements is like a decision we make based on circumstances. For example if i wake up very early, i do some exercise e.g Road work and cardio, else if i wake up 30mins late, i skip road work, and do just cardio, else i eat breakfast and write some code. These if-else decisions can be modeled in code by creating conditional statements. A conditional statement checks specific condition(s) and performs a task based on the condition(s).
 
@@ -75,13 +75,31 @@ if (hungerLevel >= 7) {
 }// output = Time to eat!
 ```
 
+Note: There are difference between `===` and `==` and also `!==` and `!=`. If the two operands
+ are of the same type and have the same value, then `===` produces true and `!==` produces false. The `==` and `!=` do the right thing when the operands
+ are of the same type, but if they are of different types, they attempt to coerce the values. examples:
+
+ ```js
+ 17 == '17'   // true
+ 17 === '17'   // false
+
+false == '0'  // true
+false === '0'  // false
+
+'string' == 'string' // true
+'string' === 'string' // true
+ ```
+
+ it's best practice to use the `===` and `!==` operators, unless you fully understand the conversions that take place with `==` and `!=`.
+
+
 ### Logical operators
 
 In conditionals, boolean `true` or `false` values will most times be in use. In javaScript *logical operators* is use to work with boolean value. There are three(3) logical operators:
 
-- The `and` operator (&&)
-- The `or` operator (||)
-- The `not` (!)
+- The `and` operator (`&&`)
+- The `or` operator (`||`)
+- The `not` (`!`)
 
 When we use the `&&` operator, we are checking that two things are true:
 
@@ -138,10 +156,10 @@ The code block in the if statement will run because myVariable has a truthy valu
 
 Falsy values are:
 - 0
-- Empty strings like "" or ''
-- null which represent when there is no value at all
-- undefined which represent when a declared variable lacks a value
-- NaN, or Not a Number
+- Empty strings like `""` or `''`
+- `null` which represent when there is no value at all
+- `undefined` which represent when a declared variable lacks a value
+- `NaN` which means *Not a Number*
 
 Here’s an example with numbers:
 
@@ -225,3 +243,96 @@ switch (stopLight) {
 - The value of stopLight is `'yellow'`, so the second case runs— `'Slow down'` is logged to the console.
 - The `break` keyword tells the computer to exit the block and not execute any more code or check any other cases inside the code block. Note: Without the `break` keyword at the end of each case, the program would execute the code for all matching cases and the default code as well. This behavior is different from `if/else` conditional statements which execute only one block of code.
 - At the end of each switch statement, there is a default statement. If none of the cases are true, then the code in the default statement will run.
+
+#### Let use conditional statement to provide solution to some javaScript problems.
+
+##### Task
+Complete the getGrade(score) function, It has one parameter: an integer,**score** , denoting the number of points Julia earned on an exam. It must return the letter corresponding to her **grade** according to the following rules:
+
+- if 25 < score <= 30 then *grade* = **A**
+- if 20 < score < 25 then *grade* = **B**
+- if 15 < score < 20 then *grade* = **C**
+- if 10 < score < 15 then *grade* = **D**
+- if 5 < score < 10 then *grade* = **E**
+- if 0 <= score < 5 then *grade* = **F**
+
+**Solution**
+
+```js
+function getGrade(score) {
+    let grade;
+    if (0 <= score && score <= 5) {
+        grade = "F";
+    } else if (5 < score && score <= 10) {
+        grade = "E";
+    } else if (10 < score && score <= 15) {
+        grade = "D";
+    } else if (15 < score && score <= 20) {
+        grade = "C";
+    } else if (20 < score && score <= 25) {
+        grade = "B";
+    } else if (25 < score && score <= 30) {
+        grade = "A";
+    } else {
+      grade = "Did not take test!"
+    }
+    return grade;
+}
+console.log(getGrade(11));
+// output : D.
+``` 
+
+Good, now that we've seen the `if...else` and `else if` in action, let see how the `switch` statement works. 
+
+##### Task
+Complete the getLetter(s) function in the editor. It has one parameter: a string, *s*, consisting of lowercase English alphabetic letters (i.e., a through z). It must return A, B, C, or D depending on the following criteria:
+- If the first character in string *s* is in the set {a, e, i, o, u}, then return A.
+- If the first character in string *s* is in the set {b, c, d, f, g}, then return B.
+- If the first character in string *s* is in the set {h, j, k, l, m}, then return C.
+- If the first character in string *s* is in the set {n, p, q, r, s, t, v, w, x, y, z}, then return D.
+
+**Solution**
+
+```js
+function getLetter(s) {
+    let letter;
+   switch (s.charAt(0)) {
+        case("a"):
+        case("e"):
+        case("i"):
+        case("o"):
+        case("u"):
+            letter = "A";
+            break;
+        case("b"):
+        case("c"):
+        case("d"):
+        case("f"):
+        case("g"):
+            letter = "B";
+            break;
+        case("h"):
+        case("j"):
+        case("k"):
+        case("l"):
+        case("m"):
+            letter = "C";
+            break;
+        default:
+            letter = "D";
+            break;
+    }
+    return letter;
+}
+console.log(getLetter("adfgt"));
+// output : A
+```
+That is how coditional statements are use to solve problems.
+
+
+### Resources
+
+- [MDN (mozilla developers network)](https://developer.mozilla.org/en-US/)
+- [Codecademy](codecademy.com)
+- [W3schools](w3schools.com)
+- [Hackerrank (coding challange)](https://www.hackerrank.com/domains/tutorials/10-days-of-javascript).
